@@ -84,20 +84,20 @@ $(document).ready(function () {
         let newForm = $('#new-form');
         if (!hasError) {
             loader.css('display', 'flex');
-            // $.ajax({
-            //     method: "POST",
-            //     url: "http://testologia.site/checkout",
-            //     data: {product: productName.val(), name: name.val(), phone: tel.val()}
-            // })
-            //     .done(function (message) {
+            $.ajax({
+                method: "POST",
+                url: "http://testologia.site/checkout",
+                data: {product: productName.val(), name: name.val(), phone: tel.val()}
+            })
+                .done(function (message) {
                     loader.hide();
-                    // if (message.success) {
+                    if (message.success) {
                         $('.order__form').css('display', 'none');
                         newForm.css('display', 'flex');
-                    // } else {
-                    //     alert("Возникла ошибка при оформлении заказа, позвоните нам и сделайте заказ");
-                    // }
-                // });
+                    } else {
+                        alert("Возникла ошибка при оформлении заказа, позвоните нам и сделайте заказ");
+                    }
+                });
         }
         $('.btn.new-form-btn').click(function () {
             newForm.css('display', 'none');
